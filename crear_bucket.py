@@ -1,0 +1,21 @@
+import boto3
+
+def lambda_handler(event, context):
+    # Entrada (json)
+    nombre_bucket = event['body']['bucket']
+    
+    # Proceso
+    s3 = boto3.client('s3')
+    response = s3.create_bucket(
+        Bucket=nombre_bucket,
+        CreateBucketConfiguration={
+            'LocationConstraint': 'us-east-1'  # Cambia la región si es necesario
+        }
+    )
+    
+    # Salida
+    return {
+        'statusCode': 200,
+        'mensaje': f'Bucket "{nombre_bucket}" creado exitosamente.',
+        'location': response['Location']
+    }
