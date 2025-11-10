@@ -31,7 +31,7 @@ functions:
   crear_bucket:
     handler: crear_bucket.lambda_handler
     events:
-      -http:
+      - http:
           path: /s3/crear_bucket
           method: post
           cors: true
