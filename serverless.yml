@@ -45,7 +45,7 @@ functions:
           cors: true
           integration: lambda
   subir_archivo:
-    handler: subir_archivo.lambda.handler
+    handler: subir_archivo.lambda_handler
     events:
       - http:
           path: /s3/bucket/directorio/subir_archivo
